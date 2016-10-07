@@ -1,0 +1,144 @@
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Anonymous Pro', "Lucida Console", Monaco, monospace !important;
+}
+
+/* Title */
+#titlecontainer {
+	position: absolute;
+	margin: 0 auto;
+	color: white;
+	width: 100%;
+	text-align: center;
+	padding: 0;
+}
+
+#titlecontainer h1 {
+	margin: 0.5%;
+}
+
+#titlecontainer p {
+	margin-top: 0;
+}
+
+i {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+i:hover {
+	cursor: pointer;
+}
+
+a {
+	color: white;
+	text-decoration: underline;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+
+/* Planet Buttons */
+table {
+	position: absolute;
+	width: 72%;
+	height: 5%;
+	margin: 0;
+	margin-left: 14%;
+	
+	bottom: 0;
+	padding: 0;
+	border-spacing: 0;
+}
+
+.planetbutton {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	margin: 0;
+	display: table;
+	border-left: 1px solid black;
+	font-size: 3vh;
+
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	
+}
+
+
+.planetbutton div {
+	display: table-cell;
+	vertical-align: middle;
+	transition: background-color 0.5s ease;
+	background-color: #424242;
+}
+
+.planetbutton div:hover {
+	background-color: #FFEE58;
+	cursor: pointer;
+}
+
+td:first-child .planetbutton div{
+	border-top-left-radius: 10px;
+	border-left: 0px;
+}
+
+td:last-child .planetbutton div{
+	border-top-right-radius: 10px;
+}
+
+/* Info Box */
+#infocontainer {
+	position: absolute;
+	color:white;
+	width: 30%;
+	height: 60%;
+	top: 5%;
+	right: 2%;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 5%;
+	padding: 10px;
+
+}
+
+#textwrap {
+	/*border: 2px solid red;*/
+	padding: 10px;
+	padding-top: 20px;
+	font-weight: 400;
+
+}
+
+#textwrap h1, h3 {
+	margin-top: 0;
+}
+
+#textwrap h1 {
+	font-size: 5.5vh;
+	font-weight: 700;
+}
+
+#textwrap p {
+	font-size: 3.0vh;
+
+}
+
+.info {
+	color: #FFEE58;
+}
