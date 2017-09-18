@@ -1,4 +1,5 @@
 # solarsim.github.io
 
-Solar system simulator. Scaled distances and orbits. Sizes not to scale.
-Created using three.js. 
+3D solar system simulator written in JavaScript with accurate distances and orbital / rotational speeds. Available at https://solarsim.github.io .
+
+Created using three.js (https://threejs.org). 
