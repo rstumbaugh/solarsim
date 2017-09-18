@@ -28,6 +28,7 @@ var backgroundScene, backgroundCamera;
 
 var update = true;
 var tweening = false;
+var planetsDone = false;
 
 
 $(document).ready(function() {
@@ -132,7 +133,6 @@ function init() {
 	document.body.appendChild( renderer.domElement );
 
 	$("#infocontainer").hide();
-
 }
 
 /*
@@ -158,32 +158,32 @@ function initBackground() {
 	locations.
 */
 function createPlanetMeshes() {
-
-	var texture, material, p;
 	for(var i=0; i<planets.length; i++) {
-		texture = THREE.ImageUtils.loadTexture('img/'+planets[i].name.toLowerCase()+".jpg", {}, function() {
-			renderer.render(scene, camera);
-		});
-		texture.needsUpdate = true;
-		texture.minFilter = THREE.LinearFilter;
-		material = new THREE.MeshPhongMaterial( { map: texture });
-
-		p = new THREE.Mesh( new THREE.SphereGeometry (
-								planets[i].radius,
-								segments,
-								rings),
-								material
-							);
-
-		planets[i].mesh = p;
-		planets[i].parent = new THREE.Object3D();
-
-		planets[i].parent.rotation.z = (planets[i].tilt) * Math.PI / 180; // rotate parent and add mesh to parent
-		planets[i].parent.add(planets[i].mesh);	// done to avoid problems with texture mapping and rotation
+		(function(i) {
+			THREE.ImageUtils.loadTexture('img/'+planets[i].name.toLowerCase()+".jpg", {}, function(texture) {
+				texture.needsUpdate = true;
+				texture.minFilter = THREE.LinearFilter;
+				var material = new THREE.MeshPhongMaterial( { map: texture });
+				
+				var p = new THREE.Mesh( new THREE.SphereGeometry (
+					planets[i].radius,
+					segments,
+					rings),
+					material
+				);
 		
+				planets[i].mesh = p;
+				planets[i].parent = new THREE.Object3D();
 		
+				planets[i].parent.rotation.z = (planets[i].tilt) * Math.PI / 180; // rotate parent and add mesh to parent
+				planets[i].parent.add(planets[i].mesh);	// done to avoid problems with texture mapping and rotation
 
-		scene.add(planets[i].parent);
+				scene.add(planets[i].parent);
+
+				renderer.render(scene, camera);
+				
+			});
+		})(i);
 	}
 }
 

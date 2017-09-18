@@ -81,7 +81,8 @@ Planet.prototype.update = function( toMove ) {
 		this.X = r * Math.cos(this.angle);
 		this.Z = r * Math.sin(this.angle);
 
-		this.parent.position.set(this.X, 0, this.Z);
+		if (this.parent)
+			this.parent.position.set(this.X, 0, this.Z);
 
 		this.omega = Math.sqrt(G*PlanetInfo.getSunMass()/Math.pow(10, 9) / Math.pow(r, 3));
 
@@ -91,10 +92,11 @@ Planet.prototype.update = function( toMove ) {
 			this.angle = 0;
 		}
 
-		this.mesh.rotation.y += PlanetInfo.getRotationSpeed();
+		if (this.mesh)
+			this.mesh.rotation.y += PlanetInfo.getRotationSpeed();
 	}
 
-	if(this.ringMesh != undefined) {
+	if(this.ringMesh && this.parent) {
 		this.ringMesh.position.copy(this.parent.position);
 	}
 
